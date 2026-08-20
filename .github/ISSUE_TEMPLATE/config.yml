@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Question or idea
+    url: https://github.com/kevinserrano-dev/devfest-windsor-2026/discussions
+    about: Anything that isn't a concrete bug or feature yet. Start here if you're unsure.
+  - name: 🔒 Security vulnerability
+    url: https://github.com/kevinserrano-dev/devfest-windsor-2026/security/advisories/new
+    about: Report it privately, please don't open a public issue for security problems.
+  - name: 📖 Contribution guide
+    url: https://github.com/kevinserrano-dev/devfest-windsor-2026/blob/master/CONTRIBUTING.md
+    about: How the project is structured and what a mergeable PR looks like.

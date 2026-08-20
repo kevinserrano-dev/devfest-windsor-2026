@@ -1,0 +1,100 @@
+name: 🐛 Bug report
+description: Something doesn't work the way it should
+title: "[Bug]: "
+labels: ["bug", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file this. The fields below are the ones I always end up
+        asking for anyway, so filling them in gets us to a fix much faster.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you start
+      options:
+        - label: I searched [existing issues](https://github.com/kevinserrano-dev/devfest-windsor-2026/issues?q=is%3Aissue) and this isn't a duplicate.
+          required: true
+        - label: I'm on the latest version of the app (or `master`).
+          required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you see, and what did you expect to see instead?
+      placeholder: |
+        Expected: tapping a session opens its detail screen.
+        Actual: the app returns to the schedule and the tab resets.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps, starting from a cold launch. If it only happens sometimes, say how often.
+      placeholder: |
+        1. Launch the app signed out
+        2. Open Schedule
+        3. Tap any session
+        4. Observe
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      description: Settings → About, or the branch/commit if you built it yourself.
+      placeholder: "1.2.0 (build 34) / master @ a1b2c3d"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Android
+        - iOS
+        - Both
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device and OS version
+      placeholder: "Pixel 7, Android 15 / iPhone 13, iOS 18.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does it happen?
+      options:
+        - Every time
+        - Often, but not always
+        - Happened once
+        - Only in a specific state (explain above)
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs, stack trace, or screenshots
+      description: |
+        `flutter logs` output, a crash trace, or a screen recording. Please redact any token,
+        email or personal data before pasting.
+      render: shell
+
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Would you like to work on this?
+      options:
+        - label: I'd be willing to open a PR for this fix.

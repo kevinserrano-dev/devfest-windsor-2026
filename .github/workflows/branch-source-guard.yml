@@ -1,0 +1,24 @@
+name: Branch source guard
+
+# master only takes release PRs from develop, or hotfix/* branches for emergency fixes.
+# Everything else (features, chores, docs...) must land on develop first.
+on:
+  pull_request:
+    branches: [master]
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  check-source-branch:
+    name: PR into master must come from develop or hotfix/*
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate head branch
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [ "$HEAD_REF" = "develop" ] || [[ "$HEAD_REF" == hotfix/* ]]; then
+            echo "OK: '$HEAD_REF' is allowed to target master."
+          else
+            echo "::error::PRs into master must come from 'develop' (releases) or a 'hotfix/*' branch (emergency fixes). Got '$HEAD_REF'. Target 'develop' instead."
+            exit 1
+          fi
