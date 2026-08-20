@@ -9,10 +9,15 @@ Tests. Unit tests on critical code only. No widget, golden, or integration tests
 
 If this file is wrong or unclear, open an issue.
 
+Nobody but the maintainer has push access on this repo, including to feature branches. Every
+contribution goes through a fork — there is no separate "request access" step.
+
 Quick start
 bash
-git clone https://github.com/kevinserrano-dev/devfest-windsor-2026.git
+# Fork the repo on GitHub first, then clone YOUR fork (not this one):
+git clone https://github.com/<your-username>/devfest-windsor-2026.git
 cd devfest-windsor-2026
+git remote add upstream https://github.com/kevinserrano-dev/devfest-windsor-2026.git
 
 flutter --version            # 3.47.0+, stable
 flutter pub get
@@ -39,6 +44,12 @@ Never commit google-services.json, GoogleService-Info.plist, signing keys, or .e
 Workflow
 Open an issue first unless it's a small fix. Claim work there so it isn't done twice. New to the repo? Look for good first issue.
 
+Sync your fork's develop with upstream before branching:
+
+bash
+git fetch upstream
+git checkout develop
+git merge upstream/develop
 Branch from develop, not master:
 
 text
@@ -47,6 +58,8 @@ fix/schedule-tab-resets
 docs/contributing-setup
 refactor/reminder-repository
 chore/bump-riverpod
+Push the branch to your fork (git push origin <branch>) — never to this repo, you won't have access to.
+
 Conventional Commits — they drive the changelog:
 
 text
@@ -57,7 +70,9 @@ refactor(auth): extract claim parsing from the repository
 chore(deps): bump go_router to 17.5.1
 Breaking changes: feat(api)!: ... plus a BREAKING CHANGE: footer.
 
-Open the PR against develop and fill in the template.
+Open the PR from your fork's branch against this repo's develop and fill in the template.
+master only accepts PRs from develop or hotfix/*, and only the maintainer opens those — you never
+target master directly.
 
 Before pushing:
 
