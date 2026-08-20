@@ -2,8 +2,6 @@ name: CI
 
 on:
   pull_request:
-  push:
-    branches: [master, develop]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -98,7 +96,6 @@ jobs:
 
   build-ios:
     name: Build iOS
-    if: github.event_name == 'push'
     runs-on: macos-latest
     timeout-minutes: 40
     steps:
